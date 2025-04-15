@@ -14,11 +14,11 @@ function convertToObject(sourceString) {
 
   const rules = sourceString.split(';');
 
-  for (const rule of rules) {
+  rules.forEach((rule) => {
     const trimmedRule = rule.trim();
 
     if (!trimmedRule) {
-      continue;
+      return;
     }
 
     const [property, value] = trimmedRule.split(':').map((item) => item.trim());
@@ -26,7 +26,7 @@ function convertToObject(sourceString) {
     if (property && value) {
       result[property] = value;
     }
-  }
+  });
 
   return result;
 }
